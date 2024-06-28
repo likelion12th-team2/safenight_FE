@@ -73,5 +73,4 @@ function App() {
 }
 
 export default App;
-
-// 하성언 과제 제출 ㅎㅅㅎ
+// 하성언 과제

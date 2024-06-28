@@ -1,8 +1,0 @@
-<svg width="25" height="13" viewBox="0 0 25 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g id="Battery">
-<rect id="Box" opacity="0.7" width="22.3214" height="12.1729" rx="3.5" fill="black"/>
-<rect id="Box_2" x="0.862061" y="0.869446" width="20.6897" height="10.4339" rx="3.5" fill="white"/>
-<rect id="Box_3" x="1.72412" y="1.73897" width="18.9655" height="8.6949" rx="3" fill="black"/>
-<path id="Box_4" opacity="0.7" d="M23.2143 4.34744C23.2143 4.34744 25 4.69524 25 6.08642C25 7.47761 23.2143 7.8254 23.2143 7.8254V4.34744Z" fill="black"/>
-</g>
-</svg>

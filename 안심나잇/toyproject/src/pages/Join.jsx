@@ -32,7 +32,7 @@ const Join = ({ hour, min }) => {
       </J.Bar>
       <J.Title>
         <div id="backBtn" onClick={() => handleDivClick("/home")}>
-          <img src={`${process.env.PUBLIC_URL}/photos/뒤로가기.svg`} />
+          <img src={`${process.env.PUBLIC_URL}/photos/back.svg`} />
         </div>
         <div id="join_title">
           <div id="join_title1">안심나잇</div>
@@ -48,7 +48,7 @@ const Join = ({ hour, min }) => {
         />
         <img
           id="check_img"
-          src={`${process.env.PUBLIC_URL}/photos/join보라체크.svg`}
+          src={`${process.env.PUBLIC_URL}/photos/join_purple.svg`}
         />
         <div id="line1"></div>
         <div id="pw">비밀번호</div>
@@ -59,7 +59,7 @@ const Join = ({ hour, min }) => {
         />
         <img
           id="check_img"
-          src={`${process.env.PUBLIC_URL}/photos/join회색체크.svg`}
+          src={`${process.env.PUBLIC_URL}/photos/join_gray.svg`}
         />
         <div id="line1"></div>
         <div id="pw">비밀번호 확인</div>
@@ -70,7 +70,7 @@ const Join = ({ hour, min }) => {
         />
         <img
           id="check_img"
-          src={`${process.env.PUBLIC_URL}/photos/join회색체크.svg`}
+          src={`${process.env.PUBLIC_URL}/photos/join_gray.svg`}
         />
         <div id="line1"></div>
         <div id="name_input">이름</div>
@@ -83,21 +83,21 @@ const Join = ({ hour, min }) => {
           <div id="check">
             <img
               id="member_check"
-              src={`${process.env.PUBLIC_URL}/photos/gray체크.svg`}
+              src={`${process.env.PUBLIC_URL}/photos/gray.svg`}
             />
             <div id="member_text">환자</div>
           </div>
           <div id="check">
             <img
               id="member_check"
-              src={`${process.env.PUBLIC_URL}/photos/gray체크.svg`}
+              src={`${process.env.PUBLIC_URL}/photos/gray.svg`}
             />
             <div id="member_text">간병인</div>
           </div>
           <div id="check">
             <img
               id="member_check"
-              src={`${process.env.PUBLIC_URL}/photos/gray체크.svg`}
+              src={`${process.env.PUBLIC_URL}/photos/gray.svg`}
             />
             <div id="member_text">선택하지 않음</div>
           </div>
@@ -108,14 +108,14 @@ const Join = ({ hour, min }) => {
           <div id="check">
             <img
               id="member_check"
-              src={`${process.env.PUBLIC_URL}/photos/gray체크.svg`}
+              src={`${process.env.PUBLIC_URL}/photos/gray.svg`}
             />
             <div id="member_text">동의</div>
           </div>
           <div id="check">
             <img
               id="member_check"
-              src={`${process.env.PUBLIC_URL}/photos/gray체크.svg`}
+              src={`${process.env.PUBLIC_URL}/photos/gray.svg`}
             />
             <div id="member_text">미동의</div>
           </div>
@@ -127,7 +127,7 @@ const Join = ({ hour, min }) => {
           <div id="check">
             <img
               id="terms_check"
-              src={`${process.env.PUBLIC_URL}/photos/gray체크.svg`}
+              src={`${process.env.PUBLIC_URL}/photos/gray.svg`}
             />
             <div id="member_text">전체 동의합니다</div>
           </div>
@@ -135,28 +135,28 @@ const Join = ({ hour, min }) => {
           <div id="check1">
             <img
               id="terms_check"
-              src={`${process.env.PUBLIC_URL}/photos/gray체크.svg`}
+              src={`${process.env.PUBLIC_URL}/photos/gray.svg`}
             />
             <div id="terms_text">이용약관에 동의합니다 (필수)</div>
           </div>
           <div id="check1">
             <img
               id="terms_check"
-              src={`${process.env.PUBLIC_URL}/photos/gray체크.svg`}
+              src={`${process.env.PUBLIC_URL}/photos/gray.svg`}
             />
             <div id="terms_text">개인정보 수집 및 이용에 동의합니다 (필수)</div>
           </div>
           <div id="check1">
             <img
               id="terms_check"
-              src={`${process.env.PUBLIC_URL}/photos/gray체크.svg`}
+              src={`${process.env.PUBLIC_URL}/photos/gray.svg`}
             />
             <div id="member_text">위치정보 수집에 동의합니다 (선택)</div>
           </div>
         </div>
         <div
           id="join_membership"
-          onClick={() => handleDivClick("/login-success")}
+          onClick={() => handleDivClick("/login/success")}
         >
           <div id="joinBtn">안심나잇 회원가입하기</div>
         </div>

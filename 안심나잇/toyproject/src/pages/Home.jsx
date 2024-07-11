@@ -233,4 +233,6 @@ const Home = ({ hour, min }) => {
   );
 };
 // 뭐요
+// 흑흑흑흑흑 파흐흐흐흑흐그
+// 제발 저에게 한교동을 주세요
 export default Home;

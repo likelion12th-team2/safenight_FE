@@ -42,7 +42,6 @@ const Home = ({ hour, min }) => {
           <img
             id="battery"
             src={`${process.env.PUBLIC_URL}/photos/images/BatteryWhite.svg`}
-
           />
         </div>
       </H.Bar>

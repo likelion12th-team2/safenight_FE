@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import * as D from "../styles/styledDiary";
@@ -12,14 +12,6 @@ const Diary = ({ hour, min, diarydataList }) => {
     ? diarydataList.find((item) => item.diaryId === parseInt(diaryId))
     : null;
 
-  // const [btnActive, setBtnActive] = useState("");
-
-  // const toggleActive = (e) => {
-  //   setBtnActive((prev) => {
-  //     return memoryId;
-  //   });
-  // };
-
   return (
     <D.Container>
       <D.Bar style={{ flexDirection: "row" }}>
@@ -28,7 +20,7 @@ const Diary = ({ hour, min, diarydataList }) => {
         </div>
         <div id="Connection">
           <img
-            src={`${process.env.PUBLIC_URL}/photos/Cellular Connection.svg`}
+            src={`${process.env.PUBLIC_URL}/photos/Cellular_Connection.svg`}
             alt="connection"
           />
         </div>

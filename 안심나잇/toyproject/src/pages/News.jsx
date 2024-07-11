@@ -13,6 +13,14 @@ const News = ({ hour, min }) => {
     navigate("/home");
   };
 
+  const handleDivClick = (path, external = false) => {
+    if (external) {
+      window.location.href = path;
+    } else {
+      navigate(path);
+    }
+  };
+
   return (
     <N.Container>
       <N.Bar style={{ flexDirection: "row" }}>
@@ -21,7 +29,7 @@ const News = ({ hour, min }) => {
         </div>
         <div id="Connection">
           <img
-            src={`${process.env.PUBLIC_URL}/photos/Cellular Connectionwhite.svg`}
+            src={`${process.env.PUBLIC_URL}/photos/Cellular_Connectionwhite.svg`}
             alt="connection"
           />
         </div>
@@ -56,6 +64,12 @@ const News = ({ hour, min }) => {
       </N.Search>
       <N.MainNews>
         <img
+          onClick={() =>
+            handleDivClick(
+              "https://www.dementianews.co.kr/news/articleView.html?idxno=7176",
+              true
+            )
+          }
           src={`${process.env.PUBLIC_URL}/photos/mainnews.png`}
           alt="mainnews"
         />
@@ -74,7 +88,15 @@ const News = ({ hour, min }) => {
           />
         </N.MiddleTitle>
         <N.NewsBar1>
-          <div id="middletitle">
+          <div
+            onClick={() =>
+              handleDivClick(
+                "http://ibds.or.kr/ibdsweb/page_notice_02.php?bmode=view&bm_id=b02&idx=436&cpage=1&s_field01=&s_txt=",
+                true
+              )
+            }
+            id="middletitle"
+          >
             치매에 대한 항정신병 약물은 광범위한 건강 위험을...
           </div>
           <img
@@ -84,7 +106,17 @@ const News = ({ hour, min }) => {
           />
         </N.NewsBar1>
         <N.NewsBar2>
-          <div id="middletitle">수면 무호흡증은 뇌를 힘들게 한다</div>
+          <div
+            onClick={() =>
+              handleDivClick(
+                "http://ibds.or.kr/ibdsweb/page_notice_02.php?bmode=view&bm_id=b02&idx=434&cpage=1&s_field01=&s_txt=",
+                true
+              )
+            }
+            id="middletitle"
+          >
+            수면 무호흡증은 뇌를 힘들게 한다
+          </div>
           <img
             id="detail"
             src={`${process.env.PUBLIC_URL}/photos/middlenewsback.svg`}
@@ -92,7 +124,15 @@ const News = ({ hour, min }) => {
           />
         </N.NewsBar2>
         <N.NewsBar3>
-          <div id="middletitle">
+          <div
+            onClick={() =>
+              handleDivClick(
+                "http://ibds.or.kr/ibdsweb/page_notice_02.php?bmode=view&bm_id=b02&idx=433&cpage=1&s_field01=&s_txt=",
+                true
+              )
+            }
+            id="middletitle"
+          >
             습관성 카페인 사용은 편두통과 연관성이 없다
           </div>
           <img
@@ -115,6 +155,12 @@ const News = ({ hour, min }) => {
         <N.LNews>
           <N.LNews1>
             <img
+              onClick={() =>
+                handleDivClick(
+                  "http://www.samsunghospital.com/home/healthInfo/content/contenView.do?CONT_SRC_ID=09a4727a8000f376&CONT_SRC=CMS&CONT_ID=1787&CONT_CLS_CD=001020001001",
+                  true
+                )
+              }
               id="gjgjftjd"
               src={`${process.env.PUBLIC_URL}/photos/gjguftjd.png`}
               alt="허혈성 뇌졸중"
@@ -123,6 +169,12 @@ const News = ({ hour, min }) => {
           </N.LNews1>
           <N.LNews2>
             <img
+              onClick={() =>
+                handleDivClick(
+                  "http://www.samsunghospital.com/home/healthInfo/content/contenView.do?CONT_SRC_ID=09a4727a8000f33d&CONT_SRC=CMS&CONT_ID=329&CONT_CLS_CD=001020001001",
+                  true
+                )
+              }
               id="wlwnakrgk"
               src={`${process.env.PUBLIC_URL}/photos/wlwnakrgk.png`}
               alt="지주막하출혈"

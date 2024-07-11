@@ -12,11 +12,13 @@ const Join = ({ hour, min }) => {
   return (
     <J.Container>
       <J.Bar>
-        <div id="clock">9:15</div>
+        <div id="clock">
+          {hour} : {min}
+        </div>
         <div id="statusBar">
           <img
             id="connection"
-            src={`${process.env.PUBLIC_URL}/photos/Cellular Connection검정.svg`}
+            src={`${process.env.PUBLIC_URL}/photos/Cellular_Connection검정.svg`}
           />
           <img
             id="wifi"

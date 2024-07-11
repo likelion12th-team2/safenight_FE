@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import * as H from "../styles/styledHome";
 
@@ -25,7 +25,9 @@ const Home = ({ hour, min }) => {
   return (
     <H.Container>
       <H.Bar>
-        <div id="clock">9:15</div>
+        <div id="clock">
+          {hour} : {min}
+        </div>
         <div id="statusBar">
           <img
             id="connection"
@@ -33,11 +35,11 @@ const Home = ({ hour, min }) => {
           />
           <img
             id="wifi"
-            src={`${process.env.PUBLIC_URL}/photos/WIFI흰색.svg`}
+            src={`${process.env.PUBLIC_URL}/photos/images/WIFI흰색.svg`}
           />
           <img
             id="battery"
-            src={`${process.env.PUBLIC_URL}/photos/Battery흰색.svg`}
+            src={`${process.env.PUBLIC_URL}/photos/images/Battery흰색.svg`}
           />
         </div>
       </H.Bar>

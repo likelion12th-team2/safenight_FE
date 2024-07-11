@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
+import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import * as D from "../styles/styledDiary";
 import axios from "axios";
@@ -42,7 +43,7 @@ const Diary = ({ hour, min, diarydataList }) => {
         </div>
         <div id="Connection">
           <img
-            src={`${process.env.PUBLIC_URL}/photos/images/Cellular Connection검정.svg`}
+            src={`${process.env.PUBLIC_URL}/photos/Cellular_Connection.svg`}
             alt="connection"
           />
         </div>

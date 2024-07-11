@@ -25,7 +25,7 @@ const CommunityContent = ({ hour, min }) => {
         </div>
         <div id="Connection">
           <img
-            src={`${process.env.PUBLIC_URL}/photos/Cellular Connection.svg`}
+            src={`${process.env.PUBLIC_URL}/photos/Cellular_Connection.svg`}
             alt="connection"
           />
         </div>

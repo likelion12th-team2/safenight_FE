@@ -17,7 +17,7 @@ const NewsSearch = ({ hour, min }) => {
         </div>
         <div id="Connection">
           <img
-            src={`${process.env.PUBLIC_URL}/photos/Cellular Connectionwhite.svg`}
+            src={`${process.env.PUBLIC_URL}/photos/Cellular_Connectionwhite.svg`}
             alt="connection"
           />
         </div>

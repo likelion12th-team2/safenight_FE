@@ -1,24 +1,29 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import * as M from "../styles/styledMemory";
+import axios from "axios";
 
-const Memory = ({ hour, min, dataList }) => {
+const Memory = ({ hour, min }) => {
   const navigate = useNavigate();
-
   const { memoryId } = useParams();
 
-  const memory = memoryId
-    ? dataList.find((item) => item.memoryId === parseInt(memoryId))
-    : null;
+  const [memoryList, setMemoryList] = useState([]);
 
-  // const [btnActive, setBtnActive] = useState("");
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://127.0.0.1:8000/consultLog");
+        setMemoryList(response.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    fetchData();
+  }, []);
 
-  // const toggleActive = (e) => {
-  //   setBtnActive((prev) => {
-  //     return memoryId;
-  //   });
-  // };
+  memoryList.forEach((memory) => console.log(memory.date));
+  console.log(memoryList.date);
 
   return (
     <M.Container>
@@ -28,7 +33,7 @@ const Memory = ({ hour, min, dataList }) => {
         </div>
         <div id="Connection">
           <img
-            src={`${process.env.PUBLIC_URL}/photos/Cellular Connection.svg`}
+            src={`${process.env.PUBLIC_URL}/photos/Cellular_Connection.svg`}
             alt="connection"
           />
         </div>
@@ -74,13 +79,12 @@ const Memory = ({ hour, min, dataList }) => {
         <div id="sunday">일</div>
       </M.Day>
       <M.Number>
-        {dataList.map((e, memoryId) => (
+        {memoryList.map((e) => (
           <div
             id="number"
             key={e.memoryId}
             onClick={() => {
               navigate(`/memory/${e.memoryId}`);
-              // return toggleActive;
             }}
           >
             {e.memoryId}
@@ -89,10 +93,26 @@ const Memory = ({ hour, min, dataList }) => {
       </M.Number>
       <M.Content>
         <M.ConTitle>
-          <div id="date">{memory && memory.date}</div>
-          <div id="doctor">{memory && memory.doctor}</div>
+          {memoryList.map((e) => (
+            <div id="date" key={`${e.memoryId}-date`}>
+              {e.date}
+            </div>
+          ))}
+          {memoryList.map((e) => (
+            <div id="doctor" key={`${e.memoryId}-doctor`}>
+              {e.doctor}
+            </div>
+          ))}
+          {/* {memoryList.map((e) => (
+            <div id="date">{e.date}</div>
+          ))}
+          {memoryList.map((e) => (
+            <div id="date">{e.doctor}</div>
+          ))} */}
         </M.ConTitle>
-        <M.Counseller>{memory && memory.content}</M.Counseller>
+        <M.Counseller>
+          <div id="content">{memoryList.content}</div>
+        </M.Counseller>
         <M.Newbtn style={{ textAlign: "center" }}>새글쓰기</M.Newbtn>
         <M.hr1></M.hr1>
       </M.Content>

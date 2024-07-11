@@ -207,6 +207,7 @@ export const checkBoxs = styled.div`
     margin-top: 41px;
   }
   #joinBtn {
+    border: none;
     display: flex;
     justify-content: center;
     align-items: center;

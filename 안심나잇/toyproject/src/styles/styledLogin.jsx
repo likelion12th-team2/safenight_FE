@@ -148,18 +148,17 @@ export const Enter = styled.div`
   }
 `;
 
-export const Button = styled.div`
+export const Button = styled.button`
   width: 343px;
   margin-top: 20px;
   height: 50px;
   flex-shrink: 0;
   border-radius: 10px;
+  border: none;
   background: rgba(176, 176, 176, 0.7);
 
   #detail {
     position: relative;
-    top: 17px;
-    margin-left: 152px;
     color: #fff;
     font-family: Roboto;
     font-size: 14px;

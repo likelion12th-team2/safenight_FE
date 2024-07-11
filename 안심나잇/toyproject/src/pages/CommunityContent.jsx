@@ -148,7 +148,7 @@ const CommunityContent = ({ hour, min }) => {
         <div id="see">댓글 더보기</div>
       </CC.More>
       <CC.Metoo>
-        <div id="write">나도 댓글 쓰기</div>
+        <input id="write" placeholder="나도 댓글 쓰기"></input>
       </CC.Metoo>
       <CC.Hr2></CC.Hr2>
     </CC.Container>

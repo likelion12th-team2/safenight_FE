@@ -101,7 +101,8 @@ export const Search = styled.div`
   }
 
   #detail {
-    margin-top: 9px;
+    background-colot: transparent;
+    border: none;
     margin-left: 5px;
     width: 143px;
     color: #999;

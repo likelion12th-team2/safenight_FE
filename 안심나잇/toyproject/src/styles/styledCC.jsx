@@ -511,6 +511,9 @@ export const Metoo = styled.div`
   margin-top: 10px;
 
   #write {
+    background-color: transparent;
+    border: none;
+    width: 200px;
     margin-top: 14px;
     margin-left: 20px;
     color: #aaa;

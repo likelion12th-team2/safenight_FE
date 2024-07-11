@@ -137,8 +137,10 @@ export const Title = styled.div`
   background: rgba(227, 210, 255, 0.3);
 
   #detail {
+    background-color: transparent;
+    border: none;
     height: 20px;
-    top: 10px;
+    // top: 10px;
     position: relative;
     margin-top: 10px;
     margin-left: 15px;
@@ -162,6 +164,9 @@ export const Content = styled.div`
   background: rgba(227, 210, 255, 0.3);
 
   #detail {
+    width: 300px;
+    background-color: transparent;
+    border: none;
     top: 10px;
     position: relative;
     margin-left: 15px;
@@ -185,6 +190,8 @@ export const Tag = styled.div`
   background: rgba(227, 210, 255, 0.2);
 
   #detail {
+    background-color: transparent;
+    border: none;
     margin-left: 15px;
     top: 10px;
     position: relative;
@@ -195,6 +202,7 @@ export const Tag = styled.div`
     font-weight: 400;
     line-height: normal;
     letter-spacing: -0.35px;
+    width: 300px;
   }
 `;
 

@@ -84,6 +84,7 @@ export const SearchBar = styled.div`
   box-shadow: 0px 4px 4px 0px rgba(160, 101, 255, 0.1);
 
   #text {
+    background-color: transparent;
     width: 230px;
     float: left;
     color: #999;
@@ -93,6 +94,7 @@ export const SearchBar = styled.div`
     font-weight: 400;
     line-height: 20px; /* 142.857% */
     letter-spacing: -0.35px;
+    border: none;
   }
 
   #search {

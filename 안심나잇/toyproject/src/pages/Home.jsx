@@ -14,6 +14,14 @@ const Home = ({ hour, min }) => {
     }
   };
 
+  const goCommunity = () => {
+    navigate(`/community`);
+  };
+
+  const goDiary = () => {
+    navigate(`/diary/9`);
+  };
+
   return (
     <H.Container>
       <H.Bar>
@@ -71,7 +79,7 @@ const Home = ({ hour, min }) => {
         </div>
       </H.Article>
       <H.Menu>
-        <div id="menu1">
+        <div id="menu1" onClick={goDiary}>
           <img
             id="menu_img"
             src={`${process.env.PUBLIC_URL}/photos/상담기록.svg`}
@@ -85,7 +93,7 @@ const Home = ({ hour, min }) => {
           />
           <div id="menu_text">간병인지원</div>
         </div>
-        <div id="menu3">
+        <div id="menu3" onClick={goCommunity}>
           <img
             id="menu_img"
             src={`${process.env.PUBLIC_URL}/photos/커뮤니티.svg`}

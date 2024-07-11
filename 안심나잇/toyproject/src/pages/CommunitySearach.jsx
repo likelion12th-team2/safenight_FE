@@ -34,7 +34,7 @@ const CommunitySearch = ({ hour, min }) => {
             src={`${process.env.PUBLIC_URL}/photos/search.svg`}
             alt="searchglass"
           />
-          <div id="detail">관심 있는 글을 검색해 보세요</div>
+          <input id="detail" placeholder="관심 있는 글을 검색해 보세요"></input>
         </CS.Search>
         <img
           id="mypage"

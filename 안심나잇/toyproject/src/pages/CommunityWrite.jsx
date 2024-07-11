@@ -53,13 +53,16 @@ const CommunityWrite = ({ hour, min }) => {
       </CW.Button>
       <CW.Main>
         <CW.Title>
-          <div id="detail">제목을 입력해 주세요.</div>
+          <input id="detail" placeholder="제목을 입력해 주세요."></input>
         </CW.Title>
         <CW.Content>
-          <div id="detail">내용을 입력하세요.</div>
+          <input id="detail" placeholder="내용을 입력하세요."></input>
         </CW.Content>
         <CW.Tag>
-          <div id="detail">#태그를 입력해 주세요.(최대 10개)</div>
+          <input
+            id="detail"
+            placeholder="#태그를 입력해 주세요.(최대 10개)"
+          ></input>
         </CW.Tag>
       </CW.Main>
       <CW.Keyboard>

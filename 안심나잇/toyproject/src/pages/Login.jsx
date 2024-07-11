@@ -43,11 +43,13 @@ const Login = ({ hour, min }) => {
         <div id="login"> 로그인</div>
       </L.Brand>
       <L.Enter>
-        <div id="email">이메일</div>
-        <div id="detail1">이메일을 입력해 주세요</div>
+        <div id="email" place>
+          이메일
+        </div>
+        <input id="detail1" placeholder="이메일을 입력해 주세요"></input>
         <div id="line1" />
         <div id="password">비밀번호</div>
-        <div id="detail2">비밀번호를 입력해주세요</div>
+        <input id="detail2" placeholder="비밀번호를 입력해주세요"></input>
         <div id="line2" />
         <L.Button onClick={goLS}>
           <div id="detail">로그인</div>

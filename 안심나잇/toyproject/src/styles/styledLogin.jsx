@@ -100,6 +100,8 @@ export const Enter = styled.div`
   }
 
   #detail1 {
+    background-color: transparent;
+    border: none;
     margin-top: 12px;
     color: #aaa;
     font-family: Roboto;
@@ -127,6 +129,8 @@ export const Enter = styled.div`
   }
 
   #detail2 {
+    background-color: transparent;
+    border: none;
     margin-top: 12px;
     color: #aaa;
     font-family: Roboto;

@@ -43,7 +43,7 @@ const NewsSearch = ({ hour, min }) => {
           />
         </NS.Backbtn>
         <NS.SearchBar>
-          <div id="text">| 오늘의 뉴스를 검색해 보세요</div>
+          <input id="text" placeholder="오늘의 뉴스를 검색해 보세요"></input>
           <img
             src={`${process.env.PUBLIC_URL}/photos/search.svg`}
             alt="search"

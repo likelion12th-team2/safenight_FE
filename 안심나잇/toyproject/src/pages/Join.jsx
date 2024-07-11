@@ -23,20 +23,20 @@ const Join = ({ hour, min }) => {
     console.log("name:", name);
     console.log("role:", role);
     console.log("allow: ", allow_noti);
-    // try {
-    //   const response = await axios.post("http://127.0.0.1:8000/user/", {
-    //     username: username,
-    //     email: email,
-    //     name: name,
-    //     password: password,
-    //     role: role,
-    //     allow_noti: allow_noti,
-    //   });
-    //   setMessage("회원가입 성공!");
-    //   navigate("/login/success");
-    // } catch (error) {
-    //   setMessage("회원가입 실패: " + error.message);
-    // }
+    try {
+      const response = await axios.post("http://127.0.0.1:8000/user/", {
+        username: username,
+        email: email,
+        name: name,
+        password: password,
+        role: role,
+        allow_noti: allow_noti,
+      });
+      setMessage("회원가입 성공!");
+      navigate("/login/success");
+    } catch (error) {
+      setMessage("회원가입 실패: " + error.message);
+    }
   };
 
   const handleDivClick = (path) => {

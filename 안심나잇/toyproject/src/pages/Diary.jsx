@@ -1,24 +1,38 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import * as D from "../styles/styledDiary";
+import axios from "axios";
 
 const Diary = ({ hour, min, diarydataList }) => {
   const navigate = useNavigate();
-
   const { diaryId } = useParams();
 
-  const diary = diaryId
-    ? diarydataList.find((item) => item.diaryId === parseInt(diaryId))
-    : null;
+  const [selectedDiary, setSelectedDiary] = useState(null);
+  const [postList, setPostList] = useState([]);
 
-  // const [btnActive, setBtnActive] = useState("");
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://127.0.0.1:8000/diary");
+        setPostList(response.data); // API 응답으로 받은 데이터를 state에 저장
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    fetchData(); // useEffect에서 fetchData 함수 호출
+  }, []);
 
-  // const toggleActive = (e) => {
-  //   setBtnActive((prev) => {
-  //     return memoryId;
-  //   });
-  // };
+  // diaryId가 유효하면 해당 일기를 선택
+  useEffect(() => {
+    if (diaryId) {
+      const selected = diarydataList.find(
+        (item) => item.diaryId === parseInt(diaryId)
+      );
+      setSelectedDiary(selected);
+    } else {
+      setSelectedDiary(null);
+    }
+  }, [diaryId, diarydataList]);
 
   return (
     <D.Container>
@@ -28,7 +42,7 @@ const Diary = ({ hour, min, diarydataList }) => {
         </div>
         <div id="Connection">
           <img
-            src={`${process.env.PUBLIC_URL}/photos/Cellular Connection.svg`}
+            src={`${process.env.PUBLIC_URL}/photos/images/Cellular Connection검정.svg`}
             alt="connection"
           />
         </div>
@@ -74,13 +88,12 @@ const Diary = ({ hour, min, diarydataList }) => {
         <div id="sunday">일</div>
       </D.Day>
       <D.Number>
-        {diarydataList.map((e, diaryId) => (
+        {diarydataList.map((e) => (
           <div
             id="number"
             key={e.diaryId}
             onClick={() => {
               navigate(`/diary/${e.diaryId}`);
-              // return toggleActive;
             }}
           >
             {e.diaryId}
@@ -88,14 +101,30 @@ const Diary = ({ hour, min, diarydataList }) => {
         ))}
       </D.Number>
       <D.Content>
-        <D.ConTitle>
-          <div id="date">{diary && diary.date}</div>
-          <D.ConSave>
-            <div id="save">저장</div>
-          </D.ConSave>
-        </D.ConTitle>
-        <D.Counseller>{diary && diary.content}</D.Counseller>
-        <D.hr1></D.hr1>
+        {selectedDiary && (
+          <>
+            <D.ConTitle>
+              <div
+                id="date"
+                onClick={() => navigate(`/diary/${selectedDiary.date}`)}
+              >
+                {selectedDiary.date}
+              </div>
+              <D.ConSave>
+                <div id="save">저장</div>
+              </D.ConSave>
+            </D.ConTitle>
+            <D.Counseller>
+              <div
+                id={selectedDiary.content}
+                onClick={() => navigate(`/diary/${selectedDiary.content}`)}
+              >
+                {selectedDiary.content}
+              </div>
+            </D.Counseller>
+            <D.hr1></D.hr1>
+          </>
+        )}
       </D.Content>
     </D.Container>
   );

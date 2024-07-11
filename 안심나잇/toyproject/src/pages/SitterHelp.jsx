@@ -16,15 +16,15 @@ const SitterHelp = ({ hour, min }) => {
         <div id="statusBar">
           <img
             id="connection"
-            src={`${process.env.PUBLIC_URL}/photos/Cellular_ConnectionBlack.svg`}
+            src={`${process.env.PUBLIC_URL}/photos/images/Cellular_ConnectionBlack.svg`}
           />
           <img
             id="wifi"
-            src={`${process.env.PUBLIC_URL}/photos/WIFI_black.svg`}
+            src={`${process.env.PUBLIC_URL}/photos/images/WIFI_black.svg`}
           />
           <img
             id="battery"
-            src={`${process.env.PUBLIC_URL}/photos/BatteryBlack.svg`}
+            src={`${process.env.PUBLIC_URL}/photos/images/BatteryBlack.svg`}
           />
         </div>
       </S.Bar>

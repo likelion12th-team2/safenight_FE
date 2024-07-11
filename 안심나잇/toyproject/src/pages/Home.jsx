@@ -230,5 +230,5 @@ const Home = ({ hour, min }) => {
     </H.Container>
   );
 };
-
+// 뭐요
 export default Home;

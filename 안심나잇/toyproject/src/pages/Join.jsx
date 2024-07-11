@@ -23,20 +23,20 @@ const Join = ({ hour, min }) => {
     console.log("name:", name);
     console.log("role:", role);
     console.log("allow: ", allow_noti);
-    try {
-      const response = await axios.post("http://127.0.0.1:8000/user/", {
-        username: username,
-        email: email,
-        name: name,
-        password: password,
-        role: role,
-        allow_noti: allow_noti,
-      });
-      setMessage("회원가입 성공!");
-      navigate("/login/success");
-    } catch (error) {
-      setMessage("회원가입 실패: " + error.message);
-    }
+    // try {
+    //   const response = await axios.post("http://127.0.0.1:8000/user/", {
+    //     username: username,
+    //     email: email,
+    //     name: name,
+    //     password: password,
+    //     role: role,
+    //     allow_noti: allow_noti,
+    //   });
+    //   setMessage("회원가입 성공!");
+    //   navigate("/login/success");
+    // } catch (error) {
+    //   setMessage("회원가입 실패: " + error.message);
+    // }
   };
 
   const handleDivClick = (path) => {
@@ -133,69 +133,44 @@ const Join = ({ hour, min }) => {
           <div id="line1"></div>
         </J.Join_email>
         <J.CheckBoxs>
-          <div id="member_select">
+          <J.Member_select>
             <div id="member_select_title">회원선택</div>
             <div id="check1">
-              {/* <div id="check1" onClick={() => setRole(1)}> */}
-              <input type="checkbox" id="cbx2" onClick={() => setRole(1)} />
-              <label for="cbx2" class="check">
-                <svg width="18px" height="18px" viewBox="0 0 18 18">
-                  <path d="M 1 9 L 1 9 c 0 -5 3 -8 8 -8 L 9 1 C 14 1 17 5 17 9 L 17 9 c 0 4 -4 8 -8 8 L 9 17 C 5 17 1 14 1 9 L 1 9 Z"></path>
-                  <polyline points="1 9 7 14 15 4"></polyline>
-                </svg>
+              <label class="container" onClick={() => setRole(1)}>
+                <input type="checkbox" checked="checked" />
+                <div class="checkmark"></div>
               </label>
               <div id="member_text">환자</div>
-              {/* </div> */}
             </div>
             <div id="check2">
-              <input type="checkbox" id="cbx2" onClick={() => setRole(2)} />
-              <label for="cbx2" class="check">
-                <svg width="18px" height="18px" viewBox="0 0 18 18">
-                  <path d="M 1 9 L 1 9 c 0 -5 3 -8 8 -8 L 9 1 C 14 1 17 5 17 9 L 17 9 c 0 4 -4 8 -8 8 L 9 17 C 5 17 1 14 1 9 L 1 9 Z"></path>
-                  <polyline points="1 9 7 14 15 4"></polyline>
-                </svg>
+              <label class="container" onClick={() => setRole(2)}>
+                <input type="checkbox" checked="checked" />
+                <div class="checkmark"></div>
               </label>
               <div id="member_text">간병인</div>
             </div>
             <div id="check3">
-              <input type="checkbox" id="cbx2" onClick={() => setRole(2)} />
-              <label for="cbx2" class="check">
-                <svg width="18px" height="18px" viewBox="0 0 18 18">
-                  <path d="M 1 9 L 1 9 c 0 -5 3 -8 8 -8 L 9 1 C 14 1 17 5 17 9 L 17 9 c 0 4 -4 8 -8 8 L 9 17 C 5 17 1 14 1 9 L 1 9 Z"></path>
-                  <polyline points="1 9 7 14 15 4"></polyline>
-                </svg>
+              <label class="container" onClick={() => setRole(3)}>
+                <input type="checkbox" checked="checked" />
+                <div class="checkmark"></div>
               </label>
               <div id="member_text">선택하지 않음</div>
             </div>
-          </div>
+          </J.Member_select>
 
           <J.Alarm>
             <div id="alarm_check">알람 받기(선택)</div>
             <div id="check4">
-              <input
-                type="checkbox"
-                id="cbx2"
-                onClick={() => setAllowNoti(true)}
-              />
-              <label for="cbx2" class="check">
-                <svg width="18px" height="18px" viewBox="0 0 18 18">
-                  <path d="M 1 9 L 1 9 c 0 -5 3 -8 8 -8 L 9 1 C 14 1 17 5 17 9 L 17 9 c 0 4 -4 8 -8 8 L 9 17 C 5 17 1 14 1 9 L 1 9 Z"></path>
-                  <polyline points="1 9 7 14 15 4"></polyline>
-                </svg>
+              <label class="container" onClick={() => setAllowNoti(true)}>
+                <input type="checkbox" checked="checked" />
+                <div class="checkmark"></div>
               </label>
               <div id="member_text">동의</div>
             </div>
             <div id="check5">
-              <input
-                type="checkbox"
-                id="cbx2"
-                onClick={() => setAllowNoti(false)}
-              />
-              <label for="cbx2" class="check">
-                <svg width="18px" height="18px" viewBox="0 0 18 18">
-                  <path d="M 1 9 L 1 9 c 0 -5 3 -8 8 -8 L 9 1 C 14 1 17 5 17 9 L 17 9 c 0 4 -4 8 -8 8 L 9 17 C 5 17 1 14 1 9 L 1 9 Z"></path>
-                  <polyline points="1 9 7 14 15 4"></polyline>
-                </svg>
+              <label class="container" onClick={() => setAllowNoti(false)}>
+                <input type="checkbox" checked="checked" />
+                <div class="checkmark"></div>
               </label>
               <div id="member_text">미동의</div>
             </div>

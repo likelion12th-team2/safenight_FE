@@ -34,11 +34,11 @@ const SitterHelp = ({ hour, min }) => {
         </div>
         <div id="category">
           카테고리{" "}
-          <img src={`${process.env.PUBLIC_URL}/photos/아래화살표.svg`} />
+          <img src={`${process.env.PUBLIC_URL}/photos/down_arrow_help.svg`} />
         </div>
         <div id="function">
-          <img src={`${process.env.PUBLIC_URL}/photos/돋보기.svg`} />
-          <img src={`${process.env.PUBLIC_URL}/photos/장바구니.svg`} />
+          <img src={`${process.env.PUBLIC_URL}/photos/search.svg`} />
+          <img src={`${process.env.PUBLIC_URL}/photos/cart.svg`} />
         </div>
       </S.Title>
       <S.Ad>

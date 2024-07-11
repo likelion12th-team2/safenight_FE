@@ -61,7 +61,7 @@ function App() {
           path="/mypage/edit"
           element={<MyPageEdit hour={hour} min={min} />}
         />
-        <Route path="/login" element={<Login hour={hour} min={min} />} />
+        <Route path="/" element={<Login hour={hour} min={min} />} />
         <Route path="/join" element={<Join hour={hour} min={min} />} />
         <Route
           path="/sitterhelp"

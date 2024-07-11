@@ -12,7 +12,9 @@ const SitterHelp = ({ hour, min }) => {
   return (
     <S.Container>
       <S.Bar>
-        <div id="clock">9:15</div>
+        <div id="clock">
+          {hour} : {min}
+        </div>
         <div id="statusBar">
           <img
             id="connection"

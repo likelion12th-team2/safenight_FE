@@ -33,8 +33,7 @@ const SitterHelp = ({ hour, min }) => {
           안심나잇
         </div>
         <div id="category">
-          카테고리{" "}
-          <img src={`${process.env.PUBLIC_URL}/photos/down_arrow_help.svg`} />
+          카테고리 <img src={`${process.env.PUBLIC_URL}/photos/down.svg`} />
         </div>
         <div id="function">
           <img src={`${process.env.PUBLIC_URL}/photos/search.svg`} />

@@ -9,6 +9,10 @@ const Login = ({ hour, min }) => {
   const goLS = () => {
     navigate(`/login/success`);
   };
+
+  const goJoin = () => {
+    navigate(`/join`);
+  };
   return (
     <L.Container>
       <L.Bar style={{ flexDirection: "row" }}>
@@ -57,7 +61,9 @@ const Login = ({ hour, min }) => {
         <L.Detail>
           <div id="id">아이디 찾기</div>
           <div id="pw">비밀번호 찾기</div>
-          <div id="new">회원가입</div>
+          <div id="new" onClick={goJoin}>
+            회원가입
+          </div>
         </L.Detail>
       </L.Enter>
       <L.Another>

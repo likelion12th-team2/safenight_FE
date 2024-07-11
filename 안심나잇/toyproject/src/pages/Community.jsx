@@ -109,7 +109,7 @@ const Community = ({ hour, min }) => {
         </div>
         <img
           id="icon"
-          src={`${process.env.PUBLIC_URL}/photos/Bad news.png`}
+          src={`${process.env.PUBLIC_URL}/photos/Bad_news.png`}
           alt="광고"
         />
       </C.Ad>

@@ -2,27 +2,35 @@ import React from "react";
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import * as J from "../styles/styledJoin";
-import axios from "axios";
+import axios, { all } from "axios";
 
 const Join = ({ hour, min }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [passwordConfirm, setPasswordConfirm] = useState("");
   const [message, setMessage] = useState("");
   const [username, setUsername] = useState("");
-  const [memberType, setMemberType] = useState(""); // 회원 선택 (환자, 간병인, 선택하지 않음)
-  const [agreeTerms, setAgreeTerms] = useState(false); // 약관 동의
+  const [name, setName] = useState("");
+  const [role, setRole] = useState(""); // 회원 선택 (환자, 간병인, 선택하지 않음)
+  const [allow_noti, setAllowNoti] = useState("");
 
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    console.log("Email:", email);
+    console.log("Password:", password);
+    console.log("username:", username);
+    console.log("name:", name);
+    console.log("role:", role);
+    console.log("allow: ", allow_noti);
     try {
       const response = await axios.post("http://127.0.0.1:8000/user/", {
-        email: email,
-        password: password,
         username: username,
-        member_type: memberType,
+        email: email,
+        name: name,
+        password: password,
+        role: role,
+        allow_noti: allow_noti,
       });
       setMessage("회원가입 성공!");
       navigate("/login/success");
@@ -44,15 +52,12 @@ const Join = ({ hour, min }) => {
         <div id="statusBar">
           <img
             id="connection"
-            src={`${process.env.PUBLIC_URL}/photos/Cellular_Connection검정.svg`}
+            src={`${process.env.PUBLIC_URL}/photos/Cellular_Connection.svg`}
           />
-          <img
-            id="wifi"
-            src={`${process.env.PUBLIC_URL}/photos/WIFI검정.svg`}
-          />
+          <img id="wifi" src={`${process.env.PUBLIC_URL}/photos/WIFI.svg`} />
           <img
             id="battery"
-            src={`${process.env.PUBLIC_URL}/photos/Battery검정.svg`}
+            src={`${process.env.PUBLIC_URL}/photos/Battery.svg`}
           />
         </div>
       </J.Bar>
@@ -87,7 +92,7 @@ const Join = ({ hour, min }) => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
-            id="email_text"
+            id="password_text"
             placeholder="8 ~ 20자 영문 대,소문자,숫자,특수문자 조합"
           />
           <img
@@ -98,7 +103,7 @@ const Join = ({ hour, min }) => {
           <div id="pw">비밀번호 확인</div>
           <input
             type="password"
-            id="email_text"
+            id="pw_check"
             placeholder="8 ~ 20자 영문 대,소문자,숫자,특수문자 조합"
           />
           <img
@@ -106,65 +111,100 @@ const Join = ({ hour, min }) => {
             src={`${process.env.PUBLIC_URL}/photos/join_gray.svg`}
           />
           <div id="line1"></div>
-          <div id="name_input">닉네임</div>
+          <div id="nickname_input">아이디</div>
           <input
             type="text"
-            id="email_text"
-            placeholder="닉네임을 입력해주세요"
+            id="nickname"
+            placeholder="아이디를 입력해주세요"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
           />
           <div id="line1"></div>
+          <div id="name_input">이름</div>
+          <input
+            type="text"
+            id="name"
+            placeholder="이름을 입력해주세요"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
+          <div id="line1"></div>
         </J.Join_email>
-        <J.checkBoxs>
+        <J.CheckBoxs>
           <div id="member_select">
             <div id="member_select_title">회원선택</div>
-            <div id="check">
-              <img
-                id="member_check"
-                src={`${process.env.PUBLIC_URL}/photos/gray.svg`}
-              />
+            <div id="check1">
+              {/* <div id="check1" onClick={() => setRole(1)}> */}
+              <input type="checkbox" id="cbx2" onClick={() => setRole(1)} />
+              <label for="cbx2" class="check">
+                <svg width="18px" height="18px" viewBox="0 0 18 18">
+                  <path d="M 1 9 L 1 9 c 0 -5 3 -8 8 -8 L 9 1 C 14 1 17 5 17 9 L 17 9 c 0 4 -4 8 -8 8 L 9 17 C 5 17 1 14 1 9 L 1 9 Z"></path>
+                  <polyline points="1 9 7 14 15 4"></polyline>
+                </svg>
+              </label>
               <div id="member_text">환자</div>
+              {/* </div> */}
             </div>
-            <div id="check">
-              <img
-                id="member_check"
-                src={`${process.env.PUBLIC_URL}/photos/gray.svg`}
-              />
+            <div id="check2">
+              <input type="checkbox" id="cbx2" onClick={() => setRole(2)} />
+              <label for="cbx2" class="check">
+                <svg width="18px" height="18px" viewBox="0 0 18 18">
+                  <path d="M 1 9 L 1 9 c 0 -5 3 -8 8 -8 L 9 1 C 14 1 17 5 17 9 L 17 9 c 0 4 -4 8 -8 8 L 9 17 C 5 17 1 14 1 9 L 1 9 Z"></path>
+                  <polyline points="1 9 7 14 15 4"></polyline>
+                </svg>
+              </label>
               <div id="member_text">간병인</div>
             </div>
-            <div id="check">
-              <img
-                id="member_check"
-                src={`${process.env.PUBLIC_URL}/photos/gray.svg`}
-              />
+            <div id="check3">
+              <input type="checkbox" id="cbx2" onClick={() => setRole(2)} />
+              <label for="cbx2" class="check">
+                <svg width="18px" height="18px" viewBox="0 0 18 18">
+                  <path d="M 1 9 L 1 9 c 0 -5 3 -8 8 -8 L 9 1 C 14 1 17 5 17 9 L 17 9 c 0 4 -4 8 -8 8 L 9 17 C 5 17 1 14 1 9 L 1 9 Z"></path>
+                  <polyline points="1 9 7 14 15 4"></polyline>
+                </svg>
+              </label>
               <div id="member_text">선택하지 않음</div>
             </div>
           </div>
 
-          <div id="alarm">
+          <J.Alarm>
             <div id="alarm_check">알람 받기(선택)</div>
-            <div id="check">
-              <img
-                id="member_check"
-                src={`${process.env.PUBLIC_URL}/photos/gray.svg`}
+            <div id="check4">
+              <input
+                type="checkbox"
+                id="cbx2"
+                onClick={() => setAllowNoti(true)}
               />
+              <label for="cbx2" class="check">
+                <svg width="18px" height="18px" viewBox="0 0 18 18">
+                  <path d="M 1 9 L 1 9 c 0 -5 3 -8 8 -8 L 9 1 C 14 1 17 5 17 9 L 17 9 c 0 4 -4 8 -8 8 L 9 17 C 5 17 1 14 1 9 L 1 9 Z"></path>
+                  <polyline points="1 9 7 14 15 4"></polyline>
+                </svg>
+              </label>
               <div id="member_text">동의</div>
             </div>
-            <div id="check">
-              <img
-                id="member_check"
-                src={`${process.env.PUBLIC_URL}/photos/gray.svg`}
+            <div id="check5">
+              <input
+                type="checkbox"
+                id="cbx2"
+                onClick={() => setAllowNoti(false)}
               />
+              <label for="cbx2" class="check">
+                <svg width="18px" height="18px" viewBox="0 0 18 18">
+                  <path d="M 1 9 L 1 9 c 0 -5 3 -8 8 -8 L 9 1 C 14 1 17 5 17 9 L 17 9 c 0 4 -4 8 -8 8 L 9 17 C 5 17 1 14 1 9 L 1 9 Z"></path>
+                  <polyline points="1 9 7 14 15 4"></polyline>
+                </svg>
+              </label>
               <div id="member_text">미동의</div>
             </div>
             <div id="caution">동의하시면 카드뉴스 알림이 전송됩니다.</div>
-          </div>
+          </J.Alarm>
 
           <div id="terms_agree">
             <div id="terms_agree_title">약관동의</div>
-            <div id="check">
+            <div id="check6">
               <img
                 id="terms_check"
                 src={`${process.env.PUBLIC_URL}/photos/gray.svg`}
@@ -172,14 +212,14 @@ const Join = ({ hour, min }) => {
               <div id="member_text">전체 동의합니다</div>
             </div>
             <div id="line2"></div>
-            <div id="check1">
+            <div id="check7">
               <img
                 id="terms_check"
                 src={`${process.env.PUBLIC_URL}/photos/gray.svg`}
               />
               <div id="terms_text">이용약관에 동의합니다 (필수)</div>
             </div>
-            <div id="check1">
+            <div id="check8">
               <img
                 id="terms_check"
                 src={`${process.env.PUBLIC_URL}/photos/gray.svg`}
@@ -188,7 +228,7 @@ const Join = ({ hour, min }) => {
                 개인정보 수집 및 이용에 동의합니다 (필수)
               </div>
             </div>
-            <div id="check1">
+            <div id="check9">
               <img
                 id="terms_check"
                 src={`${process.env.PUBLIC_URL}/photos/gray.svg`}
@@ -198,18 +238,17 @@ const Join = ({ hour, min }) => {
           </div>
           <div
             id="join_membership"
-            onClick={() => handleDivClick("/login/success")}
+            // onClick={() => handleDivClick("/login/success")}
           >
             <button id="joinBtn" type="submit">
               안심나잇 회원가입하기
             </button>
           </div>
-        </J.checkBoxs>
+        </J.CheckBoxs>
         <J.Bottom>
           <div id="bottom_bar"></div>
         </J.Bottom>
       </form>
-      {message && <p>{message}</p>}
     </J.Container>
   );
 };

@@ -73,11 +73,11 @@ const Login = ({ hour, min }) => {
       <form onSubmit={handleSubmit}>
         <L.Enter>
           <div id="email" place>
-            이메일
+            아이디
           </div>
           <input
             id="detail1"
-            placeholder="이메일을 입력해 주세요"
+            placeholder="아이디를 입력해 주세요"
             type="id"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
@@ -124,7 +124,6 @@ const Login = ({ hour, min }) => {
         </L.Another>
         <L.Hr></L.Hr>
       </form>
-      {message && <p>{message}</p>}
     </L.Container>
   );
 };

@@ -1,29 +1,40 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import * as M from "../styles/styledMemory";
 import axios from "axios";
 
-const Memory = ({ hour, min }) => {
+const Memory = ({ hour, min, consultLogList }) => {
   const navigate = useNavigate();
   const { memoryId } = useParams();
 
-  const [memoryList, setMemoryList] = useState([]);
+  const [selectedConsultLog, setSelectedConsultLog] = useState(null);
+
+  const goMypage = () => {
+    navigate(`/mypage`);
+  };
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://127.0.0.1:8000/consultLog");
-        setMemoryList(response.data);
+        // memoryId가 있을 때만 API 요청
+        if (memoryId) {
+          const response = await axios.get(
+            `http://127.0.0.1:8000/consultLog/${memoryId}`
+          );
+          setSelectedConsultLog(response.data); // API 응답으로 받은 데이터를 state에 저장
+        }
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
-    fetchData();
-  }, []);
 
-  memoryList.forEach((memory) => console.log(memory.date));
-  console.log(memoryList.date);
+    fetchData(); // useEffect에서 fetchData 함수 호출
+  }, [memoryId]);
+
+  // number 클릭 시 해당 memoryId로 navigate하는 함수
+  const handleNumberClick = (id) => {
+    navigate(`/consultLog/${id}`);
+  };
 
   return (
     <M.Container>
@@ -50,6 +61,7 @@ const Memory = ({ hour, min }) => {
       <M.Background>
         <M.Backbtn>
           <img
+            onClick={goMypage}
             src={`${process.env.PUBLIC_URL}/photos/back.svg`}
             alt="backbtn"
           />
@@ -79,39 +91,30 @@ const Memory = ({ hour, min }) => {
         <div id="sunday">일</div>
       </M.Day>
       <M.Number>
-        {memoryList.map((e) => (
-          <div
-            id="number"
-            key={e.memoryId}
-            onClick={() => {
-              navigate(`/memory/${e.memoryId}`);
-            }}
-          >
-            {e.memoryId}
-          </div>
-        ))}
+        {consultLogList &&
+          consultLogList.map((e) => (
+            <div
+              id="number"
+              key={e.memoryId}
+              onClick={() => handleNumberClick(e.memoryId)}
+            >
+              {e.memoryId}
+            </div>
+          ))}
       </M.Number>
       <M.Content>
         <M.ConTitle>
-          {memoryList.map((e) => (
-            <div id="date" key={`${e.memoryId}-date`}>
-              {e.date}
-            </div>
-          ))}
-          {memoryList.map((e) => (
-            <div id="doctor" key={`${e.memoryId}-doctor`}>
-              {e.doctor}
-            </div>
-          ))}
-          {/* {memoryList.map((e) => (
-            <div id="date">{e.date}</div>
-          ))}
-          {memoryList.map((e) => (
-            <div id="date">{e.doctor}</div>
-          ))} */}
+          {selectedConsultLog && (
+            <>
+              <div id="date">{selectedConsultLog.date}</div>
+              <div id="doctor">{selectedConsultLog.doctor}</div>
+            </>
+          )}
         </M.ConTitle>
         <M.Counseller>
-          <div id="content">{memoryList.content}</div>
+          {selectedConsultLog && (
+            <div id="content">{selectedConsultLog.content}</div>
+          )}
         </M.Counseller>
         <M.Newbtn style={{ textAlign: "center" }}>새글쓰기</M.Newbtn>
         <M.hr1></M.hr1>
@@ -119,4 +122,5 @@ const Memory = ({ hour, min }) => {
     </M.Container>
   );
 };
+
 export default Memory;

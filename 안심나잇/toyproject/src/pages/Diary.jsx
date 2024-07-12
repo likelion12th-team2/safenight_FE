@@ -10,18 +10,31 @@ const Diary = ({ hour, min, diarydataList }) => {
 
   const [selectedDiary, setSelectedDiary] = useState(null);
 
+  const goMypage = () => {
+    navigate(`/mypage`);
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // API 호출
-        const response = await axios.get(`http://127.0.0.1:8000/diary`);
-        setSelectedDiary(response.data); // API 응답으로 받은 데이터를 state에 저장
+        // diaryId가 있을 때만 API 요청
+        if (diaryId) {
+          const response = await axios.get(
+            `http://127.0.0.1:8000/diary/${diaryId}`
+          );
+          setSelectedDiary(response.data); // API 응답으로 받은 데이터를 state에 저장
+        }
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
     fetchData(); // useEffect에서 fetchData 함수 호출
   }, [diaryId]);
+
+  // number 클릭 시 해당 diaryId로 navigate하는 함수
+  const handleNumberClick = (id) => {
+    navigate(`/diary/${id}`);
+  };
 
   return (
     <D.Container>
@@ -48,6 +61,7 @@ const Diary = ({ hour, min, diarydataList }) => {
       <D.Background>
         <D.Backbtn>
           <img
+            onClick={goMypage}
             src={`${process.env.PUBLIC_URL}/photos/back.svg`}
             alt="backbtn"
           />
@@ -81,7 +95,7 @@ const Diary = ({ hour, min, diarydataList }) => {
           <div
             id="number"
             key={e.diaryId}
-            onClick={() => navigate(`/diary/${e.diaryId}`)}
+            onClick={() => handleNumberClick(e.diaryId)}
           >
             {e.diaryId}
           </div>
@@ -91,22 +105,12 @@ const Diary = ({ hour, min, diarydataList }) => {
         {selectedDiary && (
           <>
             <D.ConTitle>
-              <div id="date">
-                <p>{selectedDiary.date}</p>
-                <p>{selectedDiary.content}</p>
-              </div>
+              <div id="date">{selectedDiary.date}</div>
               <D.ConSave>
                 <div id="save">저장</div>
               </D.ConSave>
             </D.ConTitle>
-            <D.Counseller>
-              <div
-                id={selectedDiary.content}
-                onClick={() => navigate(`/diary/${selectedDiary.content}`)}
-              >
-                {selectedDiary.content}
-              </div>
-            </D.Counseller>
+            <D.Counseller>{selectedDiary.content}</D.Counseller>
             <D.hr1></D.hr1>
           </>
         )}

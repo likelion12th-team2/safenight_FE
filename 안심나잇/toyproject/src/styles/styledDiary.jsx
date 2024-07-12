@@ -208,7 +208,7 @@ export const ConTitle = styled.div`
     margin-left: 30px;
     margin-top: 10px;
     display: flex;
-    width: 107px;
+    width: 130px;
     height: 35.016px;
     flex-direction: column;
     justify-content: center;
@@ -223,7 +223,7 @@ export const ConTitle = styled.div`
 `;
 
 export const ConSave = styled.div`
-  margin-left: 120px;
+  margin-left: 110px;
   margin-top: 12px;
   width: 59px;
   height: 30px;
@@ -257,7 +257,7 @@ export const Counseller = styled.div`
 
 export const hr1 = styled.div`
   margin-left: 101.5px;
-  margin-top: 160px;
+  margin-top: 190px;
   width: 140px;
   height: 5px;
   flex-shrink: 0;

@@ -259,6 +259,7 @@ export const Newbtn = styled.div`
   border-radius: 30px;
   background: var(--Color-1, #a065ff);
   margin-left: 132px;
+  margin-top: 50px;
   color: #fff;
   font-family: "Pretendard Variable";
   font-size: 16px;

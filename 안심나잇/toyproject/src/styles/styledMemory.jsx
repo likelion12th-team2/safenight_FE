@@ -208,7 +208,7 @@ export const ConTitle = styled.div`
     margin-left: 30px;
     margin-top: 20px;
     display: flex;
-    width: 107px;
+    width: 125px;
     height: 35.016px;
     flex-direction: column;
     justify-content: center;
@@ -222,7 +222,7 @@ export const ConTitle = styled.div`
   }
   #doctor {
     display: flex;
-    margin-left: 80px;
+    margin-left: 62px;
     margin-top: 20px;
     width: 120px;
     height: 35.016px;
@@ -259,7 +259,7 @@ export const Newbtn = styled.div`
   border-radius: 30px;
   background: var(--Color-1, #a065ff);
   margin-left: 132px;
-  margin-top: 50px;
+  margin-top: 30px;
   color: #fff;
   font-family: "Pretendard Variable";
   font-size: 16px;

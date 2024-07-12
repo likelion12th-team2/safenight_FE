@@ -11,7 +11,7 @@ const Mypage = ({ hour, min }) => {
   };
 
   const goCounseller = () => {
-    navigate("/memory/9");
+    navigate("/consultLog/9");
   };
 
   const goDiary = () => {

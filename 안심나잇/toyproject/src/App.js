@@ -36,7 +36,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route
-          path="/memory/:memoryId"
+          path="/consultLog/:memoryId"
           element={<Memory hour={hour} min={min} dataList={dataList} />}
         />
         <Route

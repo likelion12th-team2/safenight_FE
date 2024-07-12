@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import * as M from "../styles/styledMemory";
 import axios from "axios";
 
-const Memory = ({ hour, min, consultLogList }) => {
+const Memory = ({ hour, min, dataList }) => {
   const navigate = useNavigate();
   const { memoryId } = useParams();
 
-  const [selectedConsultLog, setSelectedConsultLog] = useState(null);
+  const [selectedMemory, setSelectedMemory] = useState(null);
 
   const goMypage = () => {
     navigate(`/mypage`);
@@ -21,17 +22,16 @@ const Memory = ({ hour, min, consultLogList }) => {
           const response = await axios.get(
             `http://127.0.0.1:8000/consultLog/${memoryId}`
           );
-          setSelectedConsultLog(response.data); // API 응답으로 받은 데이터를 state에 저장
+          setSelectedMemory(response.data); // API 응답으로 받은 데이터를 state에 저장
         }
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
-
     fetchData(); // useEffect에서 fetchData 함수 호출
   }, [memoryId]);
 
-  // number 클릭 시 해당 memoryId로 navigate하는 함수
+  // number 클릭 시 해당 diaryId로 navigate하는 함수
   const handleNumberClick = (id) => {
     navigate(`/consultLog/${id}`);
   };
@@ -91,36 +91,33 @@ const Memory = ({ hour, min, consultLogList }) => {
         <div id="sunday">일</div>
       </M.Day>
       <M.Number>
-        {consultLogList &&
-          consultLogList.map((e) => (
-            <div
-              id="number"
-              key={e.memoryId}
-              onClick={() => handleNumberClick(e.memoryId)}
-            >
-              {e.memoryId}
-            </div>
-          ))}
+        {dataList.map((e) => (
+          <div
+            id="number"
+            key={e.memoryId}
+            onClick={() => handleNumberClick(e.memoryId)}
+          >
+            {e.memoryId}
+          </div>
+        ))}
       </M.Number>
       <M.Content>
         <M.ConTitle>
-          {selectedConsultLog && (
+          {selectedMemory && (
             <>
-              <div id="date">{selectedConsultLog.date}</div>
-              <div id="doctor">{selectedConsultLog.doctor}</div>
+              <div id="date">{selectedMemory.date}</div>
+              <div id="doctor">{selectedMemory.doctor}</div>
             </>
           )}
         </M.ConTitle>
         <M.Counseller>
-          {selectedConsultLog && (
-            <div id="content">{selectedConsultLog.content}</div>
-          )}
+          {selectedMemory && <div id="content">{selectedMemory.content}</div>}
         </M.Counseller>
         <M.Newbtn style={{ textAlign: "center" }}>새글쓰기</M.Newbtn>
         <M.hr1></M.hr1>
       </M.Content>
     </M.Container>
+    // 상담 연동 ㅎㅎㅎ
   );
 };
-
 export default Memory;

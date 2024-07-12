@@ -116,6 +116,7 @@ const Diary = ({ hour, min, diarydataList }) => {
         )}
       </D.Content>
     </D.Container>
+    // 일기연동
   );
 };
 
